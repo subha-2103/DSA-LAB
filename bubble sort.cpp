@@ -1,7 +1,7 @@
-#include <stdio.h>
+#include<stdio.h>
 int main()
 {
-	int n, temp;
+	int i,n,j,temp;
 	
 	printf("Enter number of elements:");
 	scanf("%d",&n);
@@ -9,13 +9,13 @@ int main()
 	int arr[n];
 	
 	printf("Enter %d elements:\n",n);
-	for(int i = 0; i< n; i++)
+	for(i = 0; i< n; i++)
 	   scanf("%d",&arr[i]);
 	
 	// Bubble Sort logic
-	for (int i = 0; i < n; i++)
+	for (i = 0; i < n; i++)
     {
-    	for (int j = 0; j<n-i-1;j++)
+    	for (j = 0; j<n-i-1;j++)
     	{
     		if (arr[j]>arr[j+1])
     		{
@@ -26,7 +26,7 @@ int main()
 		}
 	}
 printf("Sorted array:\n");
-for(int i = 0; i<n; i++)
+for(i = 0; i<n; i++)
     printf("%d",arr[i]);
     
     return 0;
