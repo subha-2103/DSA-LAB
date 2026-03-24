@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Structure for stack node
+// Structure for queue node
 struct node
 {
     int data;
     struct node *next;
 };
 
-struct node *top = NULL;
+struct node *front = NULL;
+struct node *rear = NULL;
 
-// Push operation
-void push()
+// Enqueue operation
+void enqueue()
 {
     int item;
     struct node *newNode;
@@ -23,51 +24,65 @@ void push()
         return;
     }
 
-    printf("Enter element to push: ");
+    printf("Enter element to insert: ");
     scanf("%d", &item);
 
     newNode->data = item;
-    newNode->next = top;
-    top = newNode;
+    newNode->next = NULL;
 
-    printf("Element pushed successfully.\n");
+    if (rear == NULL)
+    {
+        front = rear = newNode;
+    }
+    else
+    {
+        rear->next = newNode;
+        rear = newNode;
+    }
+
+    printf("Element inserted successfully.\n");
 }
 
-// Pop operation
-void pop()
+// Dequeue operation
+void dequeue()
 {
     struct node *temp;
 
-    if (top == NULL)
+    if (front == NULL)
     {
-        printf("Stack Underflow!\n");
+        printf("Queue Underflow!\n");
         return;
     }
 
-    temp = top;
-    printf("Popped element: %d\n", temp->data);
-    top = temp->next;
+    temp = front;
+    printf("Deleted element: %d\n", temp->data);
+    front = front->next;
+
+    if (front == NULL)
+        rear = NULL;
+
     free(temp);
 }
 
-// Display stack
+// Display queue elements
 void display()
 {
     struct node *temp;
 
-    if (top == NULL)
+    if (front == NULL)
     {
-        printf("Stack is empty.\n");
+        printf("Queue is empty.\n");
         return;
     }
 
-    printf("Stack elements:\n");
-    temp = top;
+    printf("Queue elements:\n");
+    temp = front;
     while (temp != NULL)
     {
-        printf("%d\n", temp->data);
+        printf("%d ", temp->data);
         temp = temp->next;
     }
+    printf("\n");
 }
 
 int main()
@@ -76,18 +91,18 @@ int main()
 
     do
     {
-        printf("\n--- Stack Menu ---\n");
-        printf("1. Push\n2. Pop\n3. Display\n4. Exit\n");
+        printf("\n--- Queue Menu ---\n");
+        printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice)
         {
         case 1:
-            push();
+            enqueue();
             break;
         case 2:
-            pop();
+            dequeue();
             break;
         case 3:
             display();
