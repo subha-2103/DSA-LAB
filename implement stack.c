@@ -1,7 +1,7 @@
-#include <stdio.h>
+#include<stdio.h>
 #define MAX 5
 
-int stack[MAX];
+int stack[MAX],i;
 int top = -1;
 
 // Push operation
@@ -39,7 +39,7 @@ void display()
         return;
     }
     printf("Stack elements:\n");
-    for (int i = top; i >= 0; i--)
+    for( i = top; i >= 0; i--)
         printf("%d\n", stack[i]);
 }
 
@@ -74,4 +74,3 @@ int main()
     } while (choice != 4);
 
     return 0;
-}
