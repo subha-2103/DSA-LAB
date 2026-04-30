@@ -1,0 +1,19 @@
+AIM:
+          Program to Search an Element in the Array using Linear Search. 
+
+ALGORITHM:
+Step 1: Start.
+Step 2: Declare the counter variable (i), array size (n), element to search found.
+Step 3: Read = n, i = 0
+Step 4: Read arr[i]
+Step 5: increment i (i++)
+Step 6: if (i<n) goto step 4.
+Step 7: Read element to search (search).
+Step 8: i = 0
+Step 9: if arr[i] ! = Search goto step 12.
+Step 10: found = 1.
+Step 11: print “Element found at index = i” go to step 15.
+Step 12: i++
+Step 13: if i < n go to step 9.
+Step 14: if found not equal to 1, print “Element not found”.
+Step 15: stop
